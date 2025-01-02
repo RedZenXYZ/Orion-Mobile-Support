@@ -1060,12 +1060,12 @@ function OrionLib:MakeWindow(WindowConfig)
 				AddConnection(SliderBar.MouseEnter, function()
 					Dragging = true  
 				end)
-				AddConnection(SliderBar.MouseLeave, function(input) 
+				AddConnection(SliderBar.MouseLeave, function() 
 					Dragging = false
 				end)
 
 				AddConnection(UserInputService.InputChanged, function(input)
-					if Dragging and input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then 
+					if Dragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then 
 						local SizeScale = math.clamp((input.Position.X - SliderBar.AbsolutePosition.X) / SliderBar.AbsoluteSize.X, 0, 1)
 						Slider:Set(SliderConfig.Min + ((SliderConfig.Max - SliderConfig.Min) * SizeScale)) 
 						SaveCfg(game.GameId)
