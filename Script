@@ -1057,15 +1057,11 @@ function OrionLib:MakeWindow(WindowConfig)
 					SliderBar
 				}), "Second")
 
-				AddConnection(SliderBar.MouseEnter, function(input)
-					if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then 
-						Dragging = true 
-					end 
+				AddConnection(SliderBar.MouseEnter, function()
+					Dragging = true  
 				end)
 				AddConnection(SliderBar.MouseLeave, function(input) 
-					if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then 
-						Dragging = false 
-					end 
+					Dragging = false
 				end)
 
 				AddConnection(UserInputService.InputChanged, function(input)
